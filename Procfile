@@ -1,1 +1,1 @@
-web: gunicorn blog_prj.wsgi:application
+web: gunicorn Move_it.wsgi:application
