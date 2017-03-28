@@ -1,10 +1,12 @@
-from accounts.forms import UserRegistrationForm, UserLoginForm, ProfileRegistrationForm
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.template.context_processors import csrf
+
+from accounts.forms import UserRegistrationForm, UserLoginForm, ProfileRegistrationForm
 from .models import UserProfile
+
 
 @login_required(login_url='/login?next=profile')
 def profile(request):
@@ -46,9 +48,9 @@ def logout(request):
 
 def register(request):
     if request.method == 'POST':
-        user_form = UserRegistrationForm(request.POST)
-        if user_form.is_valid():
-            user_form.save()
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
 
             user = auth.authenticate(username=request.POST.get('username'),
                                      password=request.POST.get('password1'))
