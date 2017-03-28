@@ -27,7 +27,7 @@ DATABASE_URL = os.environ.get("DATABASE_URL")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://snhowley-move-it.herokuapp.com']
 
 
 # Application definition
