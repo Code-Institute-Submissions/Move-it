@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% load gravatar %}
+
+{% block content %}
+
+    <div class="container">
+
+        <!-- Page Header -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    <small>List of Jobs</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+
+        {#                <hr>#}
+        {#                <div class="col-md-2 col-sm-3 text-center">#}
+        {#                    <a class="story-img" href="#">#}
+        {#                        <img src="{% gravatar_url post.author.email %}" style="width:100px; height: 100px; background-color: #12ABB2; color: #ffffff;" class="img-circle">#}
+        {#                    </a>#}
+        {#                </div>#}
+        {#                <div class="col-md-10 col-sm-9">#}
+        {#                    <h3>{{ post.title }}</h3>#}
+        {#                    <div class="row">#}
+        {#                        <div class="col-xs-9">#}
+        {#                            <p>{{ post.content|truncatewords:30 }}</p>#}
+        {#                            <p><button class="btn btn-default" onclick="location.href='#'">Read More</button></p>#}
+        {#                            <p>{{ post.published_date }} | <strong>Views</strong> {{ post.views }} | <strong>Tag</strong> {{ post.tag }}</p>#}
+        {#                        </div>#}
+        {#                    </div>#}
+        {#                </div>#}
+        {#            </div>#}
+
+        {% for job in jobs %}
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="#">
+                        <img class="img-responsive" id="product_list_image" src="{{ MEDIA_URL }}{{ job.image }}" alt="">
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <h3> Collection Point </h3>
+                    <span>{{ job.collection_point }}</span>
+                </div>
+                <div class="col-md-3">
+                    <h3>Destination Point</h3>
+                    <span>{{ job.destination_point }}</span>
+                </div>
+                <div class="col-md-3">
+                    <h3> {{ job.title }}</h3>
+                    {#                    <h4>Subheading</h4>#}
+                    <span>{{ job.description|truncatewords:15 }}</span>
+
+                    <a class="btn btn-primary" href='{% url 'job_detail' job.id %}'>View Job <span
+                            class="glyphicon glyphicon-chevron-right"></span></a>
+                </div>
+            </div>
+
+            <hr>
+        {% endfor %}
+        <!-- Pagination -->
+        <div class="row text-center">
+            <div class="col-lg-12">
+                <ul class="pagination">
+                    <li>
+                        <a href="#">&laquo;</a>
+                    </li>
+                    <li class="active">
+                        <a href="#">1</a>
+                    </li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li>
+                        <a href="#">3</a>
+                    </li>
+                    <li>
+                        <a href="#">4</a>
+                    </li>
+                    <li>
+                        <a href="#">5</a>
+                    </li>
+                    <li>
+                        <a href="#">&raquo;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.row -->
+
+
+    </div>
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    </div>
+
+{% endblock %}
+
+{% comment %}275 x 183{% endcomment %}

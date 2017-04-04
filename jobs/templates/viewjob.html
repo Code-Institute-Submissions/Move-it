@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+    <div class="container">
+
+        <div>
+            <h3 class="text-center"> {{ job.title }}</h3>
+
+            <div>
+
+                <hr>
+                <div class="row">
+
+
+                    <div class="col-xs-4">
+
+                        <a href="#">
+                            <img class="img-responsive" id="product_list_image" src="{{ MEDIA_URL }}{{ job.image }}"
+                                 alt="">
+                        </a>
+                    </div>
+
+                    <div class="col-xs-4">
+                        <ul class="price">
+                            <li class="header">Job Details</li>
+                            <li class="grey">{{ job.description }}</li>
+                            <li>Collection Point: {{ job.collection_point }}</li>
+                            <li>Destination Point: {{ job.destination_point }}</li>
+                            <li>Total Kilometres: {{ job.total_distance }}km</li>
+                        </ul>
+                    </div>
+
+
+                    <div class="col-xs-4">
+                        <div>
+                            <ul class="price">
+                                <li class="header">Current Bids</li>
+                                <li class="grey">{% for bid in job.bid_set.all %}
+                                    <p>Amount: € {{ bid.bid_amount }}</p>
+                                    <p>User: <a href="">{{ bid.bidder }}</a></p>
+                                    <br>
+                                {% endfor %}</li>
+                                <li>
+                                    <button class="btn btn-default" href="#">Submit a Bid</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-default" onclick="location.href='{% url 'job_list' %}'">Back To Jobs</button>
+            <button class="btn btn-default" href="#">Submit a Bid</button>
+            <button class="btn btn-default" href="#">View All Bids</button>
+
+            {#                    <button class="btn btn-default" onclick="location.href='{% url 'post_detail' post.id %}'">Edit</button>#}
+
+            <p>{{ job.published_date }} </p>
+
+
+        </div>
+
+    </div>
+
+
+    </div>
+
+{% endblock %}
