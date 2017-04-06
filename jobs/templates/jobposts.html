@@ -51,10 +51,11 @@
                     <span>{{ job.destination_point }}</span>
                 </div>
                 <div class="col-md-3">
-                    <h3> {{ job.title }}</h3>
-                    {#                    <h4>Subheading</h4>#}
+                    <h3> Info</h3>
+                    <p> {{ job.title }}</p>
+                    <br>
                     <span>{{ job.description|truncatewords:15 }}</span>
-
+                    <br>
                     <a class="btn btn-primary" href='{% url 'job_detail' job.id %}'>View Job <span
                             class="glyphicon glyphicon-chevron-right"></span></a>
                 </div>

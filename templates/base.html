@@ -21,44 +21,43 @@
 
 </head>
 <body>
-<header id="header">
+<header>
+
     <nav class="navbar navbar-default navbar-static-top" role="banner">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <div class="navbar-brand">
-                    <a href="{% url 'index' %}"><h1>Move it</h1></a>
-                </div>
+
+        <div class="navbar-brand">
+            <a href="{% url 'index' %}"><h1>Move it</h1></a>
+
+        </div>
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <div class="menu">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation"><a href="{% url 'job_list' %}"><i class="fa fa-truck"></i> Search Jobs</a>
+                    </li>
+                    {% if user.is_authenticated %}
+
+                        <li role="presentation"><a href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a>
+                        </li>
+                        <li role="presentation"><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a>
+                        </li>
+                        <li role="presentation"><a href="{% url 'new_job' %}"><i class="fa fa-plus"></i> Post Ad</a>
+                        </li>
+                    {% else %}
+                        <li role="presentation"><a href="{% url 'register' %}"><i class="fa fa-user-plus"
+                                                                                  aria-hidden="true"></i>sign up !</a>
+
+
+                        <li role="presentation"><a href="{% url 'login' %}?next={% url 'profile' %}"><i
+                                class="fa fa-sign-in"></i> Log In</a></li>
+
+                    {% endif %}
+
+
+                </ul>
             </div>
-            <div class="navbar-collapse collapse">
-                <div class="menu">
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li class="text-left" role="presentation"><a href="{% url 'job_list' %}"><i class="fa fa-truck"></i> Search
-                            Jobs</a></li>
-                        {% if user.is_authenticated %}
-                            <li role="presentation"><a href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a>
-                            </li>
-                            <li role="presentation"><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a>
-                            </li>
-                            <li role="presentation"><a href="{% url 'new_job' %}"><i class="fa fa-plus"></i> New Job</a>
-                            </li>
-                        {% else %}
-                            <li role="presentation"> <a href="{% url 'register' %}"><i class="fa fa-user-plus" aria-hidden="true"></i>sign up !</a>
-
-
-                            <li role="presentation"><a href="{% url 'login' %}?next={% url 'profile' %}"><i class="fa fa-sign-in"></i> Log In</a></li>
-
-                        {% endif %}
-
-
-                        </ul>
-                </div>
-            </div>
+        </div>
         </div><!--/.container-->
     </nav><!--/nav-->
 </header><!--/header-->
@@ -85,9 +84,9 @@
 
 <footer>
     <div class="container">
-        <div class="col-lg-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
-            <h4>About Us</h4>
-            <p>ah now lads, we got this!</p>
+        <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <h4>Find Us</h4>
+
             <div class="contact-info">
                 <ul>
                     <li><i class="fa fa-home fa"></i>Suite 54 Grafton Street, Dublin, Ireland</li>
@@ -97,7 +96,16 @@
             </div>
         </div>
 
-        <div class="col-lg-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+        <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms">
+            <div class="">
+                <h4>Accepted Bids
+                    This Month</h4>
+                <div class="counter" data-count="15462"></div>
+
+            </div>
+        </div>
+
+        <div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
             <div class="text-center">
                 <h4>Photo Gallery</h4>
                 <ul class="sidebar-gallery">
@@ -110,15 +118,6 @@
                 </ul>
             </div>
         </div>
-
-        <div class="col-lg-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms">
-            <div class="">
-                <h4>Completed Jobs This Month</h4>
-                <div class="counter" data-count="15462"></div>
-
-            </div>
-        </div>
-
     </div>
 </footer>
 
