@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['snhowley-move-it.herokuapp.com', '127.0.0.1']
 INTERNAL_IPS = ['127.0.0.1']
 
 # Application definition
+# arn:aws:iam::756525934926:user/snhowley-move-it-u
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
     'home',
     'django_gravatar',
     'jobs',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -119,12 +121,26 @@ USE_L10N = True
 
 USE_TZ = True
 
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
 
-STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_HOST = 's3-eu-west-1.amazonaws.com'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+STATICFILES_LOCATION = 'static'
+STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+
+SITE_ID = 1
+
+MEDIAFILES_LOCATION = 'media'
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+
+
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+# Allow files to be cached continuously
+
+AWS_HEADERS = {'Cache-Control': 'max-age=94608000',}

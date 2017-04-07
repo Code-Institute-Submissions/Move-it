@@ -6,5 +6,5 @@ urlpatterns = [
     url(r'^$', views.job_list, name='job_list'),
     url(r'^jobs/new/$', views.new_job, name='new_job'),
     url(r'^jobs/(?P<id>\d+)/$', views.job_detail, name='job_detail'),
-    url(r'^bid/new/$', views.new_bid, name='new_bid'),
+    url(r'^jobs/(?P<id>\d+)/bid/$', views.new_bid, name='new_bid'),
 ]
