@@ -56,13 +56,14 @@ a:hover {
 /*===========================
   Menu and Navigation
 ============================ */
-.navbar-brand {
+.navbar-brand a {
     position: fixed;
     float: left;
     height: 50px;
-    padding: 15px 15px;
-    font-size: 18px;
+    padding: 26px 20px;
+    font-size: 28px;
     line-height: 20px;
+    color: white;
 }
 
 .navbar-brand h1 {

@@ -26,10 +26,10 @@
     <nav class="navbar navbar-default navbar-static-top" role="banner">
 
         <div class="navbar-brand">
-            <a href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" alt=""/></a>
+           <a href="{% url 'index' %}">MOVE IT</a>
 
         </div>
-        </div>
+
 
         <div class="navbar-collapse collapse">
             <div class="menu">
@@ -42,8 +42,10 @@
                         </li>
                         <li role="presentation"><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a>
                         </li>
+                        {% if user.profile.type == 2 %}
                         <li role="presentation"><a href="{% url 'new_job' %}"><i class="fa fa-plus"></i> Post Ad</a>
                         </li>
+                            {% endif %}
                     {% else %}
                         <li role="presentation"><a href="{% url 'register' %}"><i class="fa fa-user-plus"
                                                                                   aria-hidden="true"></i>sign up !</a>
@@ -123,20 +125,6 @@
 
 <div class="sub-footer">
     <div class="container">
-        <div class="social-icon">
-            <div class="col-md-4">
-                <ul class="social-network">
-                    <li><a href="#" class="fb tool-tip" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#" class="twitter tool-tip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#" class="gplus tool-tip" title="Google Plus"><i class="fa fa-google-plus"></i></a>
-                    </li>
-                    <li><a href="#" class="linkedin tool-tip" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a href="#" class="youtube tool-tip" title="You Tube"><i class="fa fa-youtube-play"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
         <div class="col-md-4 col-md-offset-4">
             <div class="copyright">
                 &copy; Shane Howley. All Rights Reserved.
